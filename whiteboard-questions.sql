@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `question_setting`;
+DROP TABLE IF EXISTS `question_history`;
+DROP TABLE IF EXISTS `questions_text`;
+
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
@@ -23,8 +28,8 @@ CREATE TABLE `question_history` (
 
 CREATE TABLE `questions_text` (
   `id` int PRIMARY KEY,
-  'difficulty' varchar
-  `type` varchar,
+  `difficulty` varchar(255),
+  `type` varchar(255),
   `question` text
 );
 
