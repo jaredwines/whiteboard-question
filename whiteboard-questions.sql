@@ -63,9 +63,9 @@ INSERT INTO questions_text(id,difficulty,type,question)VALUES(19,'Medium','Strin
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(20,'Medium','Strings','Check if String is a palindrome.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(21,'Medium','Strings','Check if a String is composed of all unique characters.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(22,'Medium','Strings','Determine if a String is an int or a double.');
-INSERT INTO questions_text(id,difficulty,type,question)VALUES(23,'Medium','Strings','Hard','Strings','Find the shortest palindrome in a String.');
+INSERT INTO questions_text(id,difficulty,type,question)VALUES(23,'Hard','Strings','Find the shortest palindrome in a String.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(24,'Hard','Strings','Print all permutations of a String.');
-INSERT INTO questions_text(id,difficulty,type,question)VALUES(25,'Hard','Strings','Given a single-line text String and a maximum width value, write the function 'String justify(String text, int maxWidth)' that formats the input text using full-justification, i.e., extra spaces on each line are equally distributed between the words; the first word on each line is flushed left and the last word on each line is flushed right.');
+INSERT INTO questions_text(id,difficulty,type,question)VALUES(25,'Hard','Strings','Given a single-line text String and a maximum width value, write the function \'String justify(String text, int maxWidth)\' that formats the input text using full-justification, i.e., extra spaces on each line are equally distributed between the words; the first word on each line is flushed left and the last word on each line is flushed right.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(26,'Medium','Trees','Implement a BST with insert and delete functions.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(27,'Medium','Trees','Print a tree using BFS and DFS.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(28,'Medium','Trees','Write a function that determines if a tree is a BST.');
