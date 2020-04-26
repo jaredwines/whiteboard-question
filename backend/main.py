@@ -4,20 +4,20 @@ from config import mysql
 from flask import jsonify
 from flask import flash, request
 		
-@app.route('/add', methods=['POST'])
+@app.route('/add-user', methods=['POST'])
 def add_emp():
 	try:
 		_json = request.json
 		_user = _json['user']
 		_password = _json['password']
-		if _name and _email and _phone and _address and request.method == 'POST':			
-			sqlQuery = "INSERT INTO rest_emp(name, email, phone, address) VALUES(%s, %s, %s, %s, %s)"
-			bindData = (_name, _email, _phone, _address)
+		if _user and _password and request.method == 'POST':			
+			sqlQuery = "INSERT INTO whiteboard_questions(user, password) VALUES(%s, %s,)"
+			bindData = (_user, _password)
 			conn = mysql.connect()
 			cursor = conn.cursor()
 			cursor.execute(sqlQuery, bindData)
 			conn.commit()
-			respone = jsonify('Employee added successfully!')
+			respone = jsonify('User added successfully!')
 			respone.status_code = 200
 			return respone
 		else:
@@ -28,12 +28,12 @@ def add_emp():
 		cursor.close() 
 		conn.close()
 		
-@app.route('/emp', methods=['GET'])
+@app.route('/user', methods=['GET'])
 def get_all_emp():
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT id, name, email, phone, address FROM rest_emp")
+		cursor.execute("SELECT * FROM whiteboard_questions")
 		empRows = cursor.fetchall()
 		respone = jsonify(empRows)
 		respone.status_code = 200
@@ -44,12 +44,12 @@ def get_all_emp():
 		cursor.close() 
 		conn.close()
 		
-@app.route('/emp/<int:id>', methods=['GET'])
+@app.route('/user/<int:id>', methods=['GET'])
 def get_emp(id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT id, name, email, phone, address FROM rest_emp WHERE id =%s", id)
+		cursor.execute("SELECT * FROM rest_emp WHERE id =%s", id)
 		empRow = cursor.fetchone()
 		respone = jsonify(empRow)
 		respone.status_code = 200

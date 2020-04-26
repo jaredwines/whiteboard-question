@@ -20,7 +20,6 @@ CREATE TABLE `question_setting` (
 CREATE TABLE `question_history` (
   `user_id` int,
   `id_question_text` int,
-  `user` varchar(255),
   `start_time` TIMESTAMP,
   `end_time` TIMESTAMP,
   `completed` CHAR,
