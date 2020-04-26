@@ -11,19 +11,19 @@ CREATE TABLE `users` (
 
 CREATE TABLE `question_setting` (
   `user_id` int,
-  `id_question_text` int,
-  `bookmark_flag` CHAR,
+  `question_text_id` int,
+  `bookmarked` CHAR,
   `comfort_level` int,
-  PRIMARY KEY (`user_id`, `id_question_text`)
+  PRIMARY KEY (`user_id`, `question_text_id`)
 );
 
 CREATE TABLE `question_history` (
   `user_id` int,
-  `id_question_text` int,
+  `question_text_id` int,
   `start_time` TIMESTAMP,
   `end_time` TIMESTAMP,
   `completed` CHAR,
-  PRIMARY KEY (`user_id`, `id_question_text`, `start_time`, `end_time`)
+  PRIMARY KEY (`user_id`, `question_text_id`, `start_time`, `end_time`)
 );
 
 CREATE TABLE `questions_text` (
@@ -35,11 +35,11 @@ CREATE TABLE `questions_text` (
 
 ALTER TABLE `question_setting` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
-ALTER TABLE `question_setting` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
+ALTER TABLE `question_setting` ADD FOREIGN KEY (`question_text_id`) REFERENCES `questions_text` (`id`);
 
 ALTER TABLE `question_history` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
-ALTER TABLE `question_history` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
+ALTER TABLE `question_history` ADD FOREIGN KEY (`question_text_id`) REFERENCES `questions_text` (`id`);
 
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(1,'Medium','General','Find the most frequent integer in an array.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(2,'Medium','General','Find pairs in an integer array whose sum is equal to 10 (bonus: do it in linear time).');

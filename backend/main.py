@@ -60,12 +60,12 @@ def get_user(id):
 		cursor.close() 
 		conn.close()
 
-@app.route('/bookmark-flag/<user_id>/<id_question_text>', methods=['GET'])
-def get_bookmark_flag(user_id, id_question_text):
+@app.route('/bookmark-flag/<user_id>/<question_text_id>', methods=['GET'])
+def get_bookmark_flag(user_id, question_text_id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT * FROM users WHERE user_id =%s id_question_text =%s", user_id, id_question_text)
+		cursor.execute("SELECT * FROM users WHERE user_id =%s question_text_id =%s", user_id, question_text_id)
 		empRow = cursor.fetchone()
 		respone = jsonify(empRow)
 		respone.status_code = 200
@@ -82,11 +82,11 @@ def set_bookmark():
 	try:
 		_json = request.json
 		_user_id = _json['user_id']
-		_id_question_text = _json['id_question_text']
+		_question_text_id = _json['question_text_id']
 		_bookmarked = _json['bookmarked']
-		if _user_id and _id_question_text and _bookmarked and request.method == 'PUT':			
-			sqlQuery = "UPDATE question_setting SET bookmarked=%s WHERE _user_id=%s, _id_question_text=%s"
-			bindData = (_user_id, _id_question_text, _bookmarked,)
+		if _user_id and _question_text_id and _bookmarked and request.method == 'PUT':			
+			sqlQuery = "UPDATE question_setting SET bookmarked=%s WHERE _user_id=%s, _question_text_id=%s"
+			bindData = (_user_id, _question_text_id, _bookmarked,)
 			conn = mysql.connect()
 			cursor = conn.cursor()
 			cursor.execute(sqlQuery, bindData)
@@ -102,12 +102,12 @@ def set_bookmark():
 		cursor.close() 
 		conn.close()
 
-@app.route('/comfort-level-flag/<_user_id>/<_id_question_text>', methods=['GET'])
-def get_comfort_level_flag(_user_id, _id_question_text):
+@app.route('/comfort-level-flag/<_user_id>/<_question_text_id>', methods=['GET'])
+def get_comfort_level_flag(_user_id, _question_text_id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT bookmark_flag FROM question_setting WHERE _user_id =%s _id_question_text =%s", _user_id, _id_question_text)
+		cursor.execute("SELECT bookmark_flag FROM question_setting WHERE _user_id =%s _question_text_id =%s", _user_id, _question_text_id)
 		empRow = cursor.fetchone()
 		respone = jsonify(empRow)
 		respone.status_code = 200
@@ -124,11 +124,11 @@ def set_comfort_level():
 	try:
 		_json = request.json
 		_user_id = _json['user_id']
-		_id_question_text = _json['id_question_text']
+		_question_text_id = _json['question_text_id']
 		_comfort_level = _json['comfort_level']
-		if _user_id and _id_question_text and _comfort_level and request.method == 'PUT':			
-			sqlQuery = "UPDATE question_setting SET comfort_level=%s WHERE _user_id=%s, _id_question_text=%s"
-			bindData = (_user_id, _id_question_text, _comfort_level,)
+		if _user_id and _question_text_id and _comfort_level and request.method == 'PUT':			
+			sqlQuery = "UPDATE question_setting SET comfort_level=%s WHERE _user_id=%s, _question_text_id=%s"
+			bindData = (_user_id, _question_text_id, _comfort_level,)
 			conn = mysql.connect()
 			cursor = conn.cursor()
 			cursor.execute(sqlQuery, bindData)
