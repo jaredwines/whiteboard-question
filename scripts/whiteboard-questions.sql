@@ -23,7 +23,7 @@ CREATE TABLE `question_history` (
   `start_time` TIMESTAMP,
   `end_time` TIMESTAMP,
   `completed` CHAR,
-  PRIMARY KEY (`user_id`, `id_question_text`)
+  PRIMARY KEY (`user_id`, `id_question_text`, `start_time`, `end_time`)
 );
 
 CREATE TABLE `questions_text` (
