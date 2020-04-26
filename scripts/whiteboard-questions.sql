@@ -5,25 +5,26 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255)
+  `user` varchar(255),
+  `password` varchar(255)
 );
 
 CREATE TABLE `question_setting` (
-  `id_question_text` int,
   `user_id` int,
+  `id_question_text` int,
   `bookmarked` CHAR,
   `comfort_level` int,
-  PRIMARY KEY (`id_question_text`, `user_id`)
+  PRIMARY KEY (`user_id`, `id_question_text`)
 );
 
 CREATE TABLE `question_history` (
-  `id_question_text` int,
   `user_id` int,
-  `name` varchar(255),
+  `id_question_text` int,
+  `user` varchar(255),
   `start_time` TIMESTAMP,
   `end_time` TIMESTAMP,
   `completed` CHAR,
-  PRIMARY KEY (`id_question_text`, `user_id`)
+  PRIMARY KEY (`user_id`, `id_question_text`)
 );
 
 CREATE TABLE `questions_text` (
@@ -33,13 +34,13 @@ CREATE TABLE `questions_text` (
   `question` text
 );
 
-ALTER TABLE `question_setting` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
-
 ALTER TABLE `question_setting` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
-ALTER TABLE `question_history` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
+ALTER TABLE `question_setting` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
 
 ALTER TABLE `question_history` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+ALTER TABLE `question_history` ADD FOREIGN KEY (`id_question_text`) REFERENCES `questions_text` (`id`);
 
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(1,'Medium','General','Find the most frequent integer in an array.');
 INSERT INTO questions_text(id,difficulty,type,question)VALUES(2,'Medium','General','Find pairs in an integer array whose sum is equal to 10 (bonus: do it in linear time).');

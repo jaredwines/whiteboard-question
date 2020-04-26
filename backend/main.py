@@ -8,10 +8,8 @@ from flask import flash, request
 def add_emp():
 	try:
 		_json = request.json
-		_name = _json['name']
-		_email = _json['email']
-		_phone = _json['phone']
-		_address = _json['address']
+		_user = _json['user']
+		_password = _json['password']
 		if _name and _email and _phone and _address and request.method == 'POST':			
 			sqlQuery = "INSERT INTO rest_emp(name, email, phone, address) VALUES(%s, %s, %s, %s, %s)"
 			bindData = (_name, _email, _phone, _address)
