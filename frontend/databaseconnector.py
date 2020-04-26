@@ -12,7 +12,6 @@ import ConfigParser
     #     self.dbname = config.get('DatabaseSection', 'database.dbname')
     
 def showQuestions():
-    print 'test'
     db = mysql.connector.connect(user='jared', password='Powell123', host='localhost', database='whiteboard_questions')
     cursor = db.cursor()
     query = ("SELECT * FROM questions_text")
