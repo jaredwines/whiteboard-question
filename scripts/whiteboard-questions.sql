@@ -12,7 +12,7 @@ CREATE TABLE `users` (
 CREATE TABLE `question_setting` (
   `user_id` int,
   `id_question_text` int,
-  `bookmarked` CHAR,
+  `bookmark_flag` CHAR,
   `comfort_level` int,
   PRIMARY KEY (`user_id`, `id_question_text`)
 );
